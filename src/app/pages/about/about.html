@@ -1,0 +1,44 @@
+<app-page-hero
+  eyebrow="About us"
+  title="Veteran discipline. Arborist skill. Neighbor respect."
+  [subtitle]="
+    'We built ' +
+    site.name +
+    ' on the values we carried in uniform — show up, do it right, and leave things better than you found them.'
+  "
+/>
+
+<section class="page-content container about-grid">
+  <div class="about-copy">
+    <h2>Our story</h2>
+    <p>
+      After years of leading teams under pressure, our founder brought that same standard to tree
+      work: clear communication, meticulous safety, and craftsmanship that lasts. We’re not the
+      biggest crew in town — and that’s intentional. We take on jobs we can execute flawlessly.
+    </p>
+    <p>
+      Whether it’s a single hazardous limb or a full property clear, you’ll get a straight answer,
+      a fair quote, and a crew that protects your landscape while we work.
+    </p>
+    <h2>What integrity means here</h2>
+    <ul>
+      <li>We recommend removal only when it’s truly the best option.</li>
+      <li>We document scope before we start — no mid-job surprises.</li>
+      <li>We leave driveways, gardens, and fences as clean as we can.</li>
+    </ul>
+  </div>
+  <aside class="about-aside">
+    <div class="about-card">
+      <p class="about-card__label">{{ site.veteranBadge }}</p>
+      <p>Serving <strong>{{ site.serviceArea }}</strong> and nearby communities.</p>
+    </div>
+    <div class="about-card about-card--accent">
+      <h3>Ready to talk trees?</h3>
+      <p>Call {{ site.phone }} or request a quote online.</p>
+    </div>
+  </aside>
+</section>
+
+<div class="container">
+  <app-cta-banner />
+</div>

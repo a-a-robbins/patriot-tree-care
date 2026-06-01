@@ -1,0 +1,26 @@
+<app-page-hero
+  eyebrow="FAQ"
+  title="Common questions"
+  subtitle="Straight answers — the same way we give estimates."
+/>
+
+<section class="page-content container">
+  <div class="faq-list">
+    @for (item of items; track item.q; let i = $index) {
+      <article class="faq-item" [class.faq-item--open]="openIndex() === i">
+        <button type="button" class="faq-item__trigger" (click)="toggle(i)" [attr.aria-expanded]="openIndex() === i">
+          {{ item.q }}
+        </button>
+        @if (openIndex() === i) {
+          <div class="faq-item__panel">
+            <p>{{ item.a }}</p>
+          </div>
+        }
+      </article>
+    }
+  </div>
+</section>
+
+<div class="container">
+  <app-cta-banner />
+</div>

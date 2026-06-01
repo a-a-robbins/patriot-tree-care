@@ -1,0 +1,118 @@
+<app-page-hero
+  eyebrow="Free quote"
+  title="Tell us about your project"
+  subtitle="We’ll review your details and respond within one business day. No pressure, no upsell scripts."
+/>
+
+<section class="page-content container quote-layout">
+  @if (isDemoHost) {
+    <p class="demo-banner" role="note">
+      <strong>Demo site:</strong> This preview is hosted on GitHub Pages. The quote form needs the
+      API server — use the phone number below, or run the full app locally with
+      <code>npm run dev</code>.
+    </p>
+  }
+  @if (success()) {
+    <div class="alert alert--success" role="status">
+      <h2>Thank you — we received your request.</h2>
+      <p>
+        A member of {{ site.name }} will reach out soon. For urgent storm damage, call
+        <a [href]="site.phoneHref">{{ site.phone }}</a>.
+      </p>
+    </div>
+  } @else {
+    <form class="quote-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="form-row">
+        <label>
+          <span>Name *</span>
+          <input type="text" formControlName="name" autocomplete="name" />
+          @if (form.controls.name.touched && form.controls.name.invalid) {
+            <small class="field-error">Please enter your name.</small>
+          }
+        </label>
+        <label>
+          <span>Email *</span>
+          <input type="email" formControlName="email" autocomplete="email" />
+          @if (form.controls.email.touched && form.controls.email.invalid) {
+            <small class="field-error">Please enter a valid email.</small>
+          }
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label>
+          <span>Phone *</span>
+          <input type="tel" formControlName="phone" autocomplete="tel" />
+          @if (form.controls.phone.touched && form.controls.phone.invalid) {
+            <small class="field-error">Please enter a phone number.</small>
+          }
+        </label>
+        <label>
+          <span>Service needed *</span>
+          <select formControlName="serviceType">
+            <option value="" disabled>Select a service</option>
+            @for (opt of serviceOptions; track opt.value) {
+              <option [value]="opt.value">{{ opt.label }}</option>
+            }
+          </select>
+          @if (form.controls.serviceType.touched && form.controls.serviceType.invalid) {
+            <small class="field-error">Please select a service.</small>
+          }
+        </label>
+      </div>
+
+      <label>
+        <span>Property address *</span>
+        <input type="text" formControlName="address" autocomplete="street-address" />
+        @if (form.controls.address.touched && form.controls.address.invalid) {
+          <small class="field-error">Please enter the job site address.</small>
+        }
+      </label>
+
+      <label>
+        <span>Preferred site visit date (optional)</span>
+        <input type="date" formControlName="preferredDate" />
+      </label>
+
+      <label>
+        <span>Describe the work *</span>
+        <textarea
+          formControlName="message"
+          rows="5"
+          placeholder="Tree species, access issues, power lines nearby, photos available, etc."
+        ></textarea>
+        @if (form.controls.message.touched && form.controls.message.invalid) {
+          <small class="field-error">Please add a few details about the job (10+ characters).</small>
+        }
+      </label>
+
+      <div class="hp" aria-hidden="true">
+        <label>
+          <span>Website</span>
+          <input type="text" formControlName="website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+
+      @if (errorMessage()) {
+        <div class="alert alert--error" role="alert">{{ errorMessage() }}</div>
+      }
+
+      <button class="btn btn--primary" type="submit" [disabled]="submitting()">
+        {{ submitting() ? 'Sending…' : 'Submit quote request' }}
+      </button>
+    </form>
+  }
+
+  <aside class="quote-aside">
+    <h2>What happens next?</h2>
+    <ol>
+      <li>We review your message (usually same day).</li>
+      <li>We schedule a site visit if needed.</li>
+      <li>You receive a written quote — no surprises.</li>
+    </ol>
+    <p class="quote-aside__phone">
+      Prefer to talk?
+      <a [href]="site.phoneHref">{{ site.phone }}</a>
+    </p>
+  </aside>
+</section>

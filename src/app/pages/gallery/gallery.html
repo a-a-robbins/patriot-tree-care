@@ -1,0 +1,26 @@
+<app-page-hero
+  eyebrow="Gallery"
+  title="Recent work in the field"
+  subtitle="Placeholder gallery — swap these tiles for your own before/after photos when ready."
+/>
+
+<section class="page-content container">
+  <div class="gallery-grid">
+    @for (item of items; track item.title; let i = $index) {
+      <figure class="gallery-item">
+        <div class="gallery-item__placeholder" [attr.data-index]="i"></div>
+        <figcaption>
+          <span class="gallery-item__category">{{ item.category }}</span>
+          <span class="gallery-item__title">{{ item.title }}</span>
+        </figcaption>
+      </figure>
+    }
+  </div>
+</section>
+
+<div class="container">
+  <app-cta-banner
+    heading="Want results like these on your property?"
+    subtext="Send photos with your quote request — it helps us estimate accurately."
+  />
+</div>

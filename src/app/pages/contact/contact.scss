@@ -1,0 +1,68 @@
+@use '../../shared/styles/buttons';
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding-bottom: 3rem;
+}
+
+.contact-card {
+  padding: 2rem;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+
+  h2 {
+    margin: 1.25rem 0 0.35rem;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-sage);
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    margin-top: 1.5rem;
+  }
+}
+
+.map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  padding: 2rem;
+  text-align: center;
+  background: var(--color-cream-dark);
+  border: 2px dashed var(--color-sage-light);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+
+  p {
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+    color: var(--color-forest-dark);
+  }
+
+  small {
+    max-width: 28ch;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}

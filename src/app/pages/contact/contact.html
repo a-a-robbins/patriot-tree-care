@@ -1,0 +1,23 @@
+<app-page-hero
+  eyebrow="Contact"
+  title="Let’s talk about your trees"
+  subtitle="Call for urgent storm damage. Use the quote form for estimates — we’ll follow up quickly."
+/>
+
+<section class="page-content container contact-grid">
+  <div class="contact-card">
+    <h2>Phone</h2>
+    <p><a [href]="site.phoneHref">{{ site.phone }}</a></p>
+    <h2>Email</h2>
+    <p><a [href]="'mailto:' + site.email">{{ site.email }}</a></p>
+    <h2>Hours</h2>
+    <p>{{ site.hours }}</p>
+    <h2>Service area</h2>
+    <p>{{ site.serviceArea }} and surrounding communities</p>
+    <a class="btn btn--primary" routerLink="/quote">Request a free quote</a>
+  </div>
+  <div class="map-placeholder" aria-label="Map placeholder">
+    <p>Map embed placeholder</p>
+    <small>Add Google Maps or Mapbox when you have a business address.</small>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+.cta {
+  margin-block: 3rem 4rem;
+}
+
+.cta__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-forest-dark) 100%);
+  color: var(--color-cream);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+
+  h2 {
+    color: var(--color-white);
+    margin: 0 0 0.5rem;
+  }
+
+  p {
+    margin: 0;
+    opacity: 0.92;
+    max-width: 36ch;
+  }
+}

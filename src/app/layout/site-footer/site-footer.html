@@ -1,0 +1,30 @@
+<footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <p class="footer__brand">{{ site.name }}</p>
+      <p class="footer__tagline">{{ site.tagline }}</p>
+      <p class="footer__badge">{{ site.veteranBadge }}</p>
+    </div>
+    <div>
+      <p class="footer__heading">Explore</p>
+      <ul>
+        @for (link of navLinks; track link.path) {
+          <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+        }
+        <li><a routerLink="/quote">Get a quote</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__heading">Contact</p>
+      <ul>
+        <li><a [href]="site.phoneHref">{{ site.phone }}</a></li>
+        <li><a [href]="'mailto:' + site.email">{{ site.email }}</a></li>
+        <li>{{ site.hours }}</li>
+        <li>Serving {{ site.serviceArea }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© {{ year }} {{ site.name }}. All rights reserved.</p>
+  </div>
+</footer>

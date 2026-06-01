@@ -1,0 +1,39 @@
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__brand" routerLink="/" (click)="closeMenu()">
+      <span class="header__logo" aria-hidden="true">🌲</span>
+      <span>
+        <strong>{{ site.name }}</strong>
+        <small>{{ site.veteranBadge }}</small>
+      </span>
+    </a>
+
+    <button
+      type="button"
+      class="header__toggle"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="site-nav"
+      (click)="toggleMenu()"
+    >
+      <span class="sr-only">Menu</span>
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+    </button>
+
+    <nav id="site-nav" class="header__nav" [class.header__nav--open]="menuOpen()">
+      @for (link of navLinks; track link.path) {
+        <a
+          routerLink="{{ link.path }}"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          (click)="closeMenu()"
+          >{{ link.label }}</a
+        >
+      }
+      <a class="btn btn--primary header__cta" routerLink="/quote" (click)="closeMenu()"
+        >Free quote</a
+      >
+    </nav>
+  </div>
+</header>

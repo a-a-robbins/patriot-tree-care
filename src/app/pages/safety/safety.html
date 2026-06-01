@@ -1,0 +1,35 @@
+<app-page-hero
+  eyebrow="Safety & credentials"
+  title="Your property. Our responsibility."
+  subtitle="Tree work is inherently risky — we mitigate that risk with training, equipment, and disciplined procedures."
+/>
+
+<section class="page-content container safety-grid">
+  <div>
+    <h2>Safety practices</h2>
+    <ul class="check-list">
+      @for (item of practices; track item) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+  </div>
+  <div>
+    <h2>Licensing & insurance</h2>
+    <ul class="check-list">
+      @for (item of credentials; track item) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+    <p class="note">
+      Replace placeholder policy details with your actual license numbers and carrier information
+      before launch.
+    </p>
+  </div>
+</section>
+
+<div class="container">
+  <app-cta-banner
+    heading="Need proof of insurance for your HOA or insurer?"
+    subtext="Mention it in your quote request — we’ll send certificates promptly."
+  />
+</div>

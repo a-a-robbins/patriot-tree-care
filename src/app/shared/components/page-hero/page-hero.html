@@ -1,0 +1,11 @@
+<header class="page-hero">
+  <div class="container">
+    @if (eyebrow()) {
+      <p class="page-hero__eyebrow">{{ eyebrow() }}</p>
+    }
+    <h1>{{ title() }}</h1>
+    @if (subtitle()) {
+      <p class="page-hero__subtitle">{{ subtitle() }}</p>
+    }
+  </div>
+</header>

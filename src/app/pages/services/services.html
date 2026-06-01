@@ -1,0 +1,26 @@
+<app-page-hero
+  eyebrow="Services"
+  title="Expert tree work for every season"
+  subtitle="From routine pruning to emergency storm response — we scope the job honestly and execute safely."
+/>
+
+<section class="page-content container">
+  <div class="services-list">
+    @for (service of services; track service.id) {
+      <article class="service-row" [id]="service.id">
+        <span class="service-row__icon" aria-hidden="true">{{ service.icon }}</span>
+        <div>
+          <h2>{{ service.title }}</h2>
+          <p>{{ service.summary }}</p>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<div class="container">
+  <app-cta-banner
+    heading="Not sure which service you need?"
+    subtext="Describe your situation on our quote form — we’ll recommend the right approach."
+  />
+</div>

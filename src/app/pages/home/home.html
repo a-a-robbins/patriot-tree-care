@@ -1,0 +1,79 @@
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="hero__badge">{{ site.veteranBadge }}</p>
+      <h1>Tree care built on <em>integrity</em> — not upsells.</h1>
+      <p class="hero__lead">
+        {{ site.name }} serves the {{ site.serviceArea }} with safe removals, expert pruning,
+        and honest recommendations. Your property deserves a crew that treats it like their own.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" routerLink="/quote">Get a free quote</a>
+        <a class="btn btn--secondary" routerLink="/services">View services</a>
+      </div>
+      <ul class="hero__stats">
+        <li><strong>15+</strong> years combined experience</li>
+        <li><strong>100%</strong> insured jobs</li>
+        <li><strong>5★</strong> local reputation</li>
+      </ul>
+    </div>
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hero__image"></div>
+      <p class="hero__caption">Professional rigging · Full cleanup · Respect for your landscape</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <header class="section__header">
+      <p class="section__eyebrow">Why homeowners choose us</p>
+      <h2>Quality you can see. Integrity you can trust.</h2>
+    </header>
+    <div class="trust-grid">
+      @for (point of trustPoints; track point.title) {
+        <article class="trust-card">
+          <h3>{{ point.title }}</h3>
+          <p>{{ point.detail }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <header class="section__header section__header--row">
+      <div>
+        <p class="section__eyebrow">What we do</p>
+        <h2>Services that protect your home &amp; trees</h2>
+      </div>
+      <a routerLink="/services" class="link-arrow">All services →</a>
+    </header>
+    <div class="service-grid">
+      @for (service of services; track service.id) {
+        <article class="service-card">
+          <span class="service-card__icon" aria-hidden="true">{{ service.icon }}</span>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.summary }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container testimonial">
+    <blockquote>
+      <p>
+        “They explained every cut, left the yard cleaner than they found it, and the quote matched
+        the final bill. That’s rare.”
+      </p>
+      <footer>— Local homeowner, {{ site.serviceArea }}</footer>
+    </blockquote>
+  </div>
+</section>
+
+<div class="container">
+  <app-cta-banner />
+</div>

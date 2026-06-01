@@ -1,0 +1,152 @@
+@use '../../shared/styles/buttons';
+
+.demo-banner {
+  grid-column: 1 / -1;
+  margin: 0 0 0.5rem;
+  padding: 1rem 1.25rem;
+  background: #fff8e6;
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+
+  code {
+    font-size: 0.85em;
+  }
+}
+
+.quote-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  padding-bottom: 4rem;
+}
+
+.quote-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2rem;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  span {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-forest-dark);
+  }
+}
+
+input,
+select,
+textarea {
+  padding: 0.75rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border: 1px solid var(--color-cream-dark);
+  border-radius: var(--radius-sm);
+  background: var(--color-cream);
+
+  &:focus {
+    outline: 2px solid var(--color-sage);
+    border-color: var(--color-sage);
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.field-error {
+  color: #9b2c2c;
+  font-size: 0.85rem;
+}
+
+.hp {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.alert {
+  padding: 2rem;
+  border-radius: var(--radius-md);
+
+  h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+  &--success {
+    background: #e8f3ea;
+    border: 1px solid var(--color-sage-light);
+  }
+
+  &--error {
+    background: #fce8e8;
+    border: 1px solid #e8b4b4;
+    color: #7a1f1f;
+    font-size: 0.95rem;
+  }
+}
+
+.quote-aside {
+  padding: 1.75rem;
+  background: var(--color-forest-dark);
+  color: var(--color-cream);
+  border-radius: var(--radius-md);
+
+  h2 {
+    margin: 0 0 1rem;
+    color: var(--color-white);
+    font-size: 1.25rem;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 1.25rem;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  a {
+    color: var(--color-gold);
+  }
+}
+
+.quote-aside__phone {
+  margin: 1.5rem 0 0;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .quote-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
