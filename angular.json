@@ -55,7 +55,13 @@
             },
             "pages": {
               "baseHref": "/patriot-tree-care/",
-              "deployUrl": "/patriot-tree-care/"
+              "deployUrl": "/patriot-tree-care/",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.pages.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"

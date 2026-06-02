@@ -41,6 +41,16 @@ In GitHub: **Settings → Pages → Build and deployment**
 
 The workflow `.github/workflows/deploy-pages.yml` runs on every push to `main`.
 
+### 4. Configure Actions secrets and variables
+
+In the repo: **Settings → Secrets and variables → Actions**.
+
+Add **secrets** (names must match what the workflows expect): `SMTP2GO_API_KEY`, `QUOTE_FROM_EMAIL`, `QUOTE_TO_EMAIL`, `FLY_API_TOKEN`.
+
+Add **variables**: `QUOTE_API_URL` (your Fly API URL), `PAGES_ORIGIN` (your `https://<username>.github.io` origin).
+
+Do not commit these values to the repository.
+
 ## Your demo URL
 
 ```

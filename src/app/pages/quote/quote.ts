@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { QUOTE_SERVICE_OPTIONS, SITE } from '../../core/data/site-content';
 import { QuoteApiService } from '../../core/services/quote-api.service';
 import { PageHero } from '../../shared/components/page-hero/page-hero';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-quote',
@@ -16,7 +17,8 @@ export class Quote {
 
   protected readonly isDemoHost =
     typeof globalThis.location !== 'undefined' &&
-    globalThis.location.hostname.endsWith('github.io');
+    globalThis.location.hostname.endsWith('github.io') &&
+    !environment.apiBaseUrl;
 
   protected readonly site = SITE;
   protected readonly serviceOptions = QUOTE_SERVICE_OPTIONS;

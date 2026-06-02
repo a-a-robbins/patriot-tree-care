@@ -1,14 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { QuoteRequest, QuoteResponse } from '../models/quote-request';
 
-/** GitHub Pages is static-only; quote emails need the Node API on a real host. */
+function quoteEndpoint(): string {
+  const base = environment.apiBaseUrl.replace(/\/$/, '');
+  return `${base}/api/quote`;
+}
+
+/** Static demo when hosted on GitHub Pages without a deployed API. */
 function isStaticDemoHost(): boolean {
   if (typeof globalThis.location === 'undefined') {
     return false;
   }
-  return globalThis.location.hostname.endsWith('github.io');
+  return (
+    globalThis.location.hostname.endsWith('github.io') && !environment.apiBaseUrl
+  );
 }
 
 @Injectable({ providedIn: 'root' })
@@ -24,6 +32,6 @@ export class QuoteApiService {
           ),
       );
     }
-    return this.http.post<QuoteResponse>('/api/quote', payload);
+    return this.http.post<QuoteResponse>(quoteEndpoint(), payload);
   }
 }
