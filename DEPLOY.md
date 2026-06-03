@@ -45,20 +45,24 @@ The workflow `.github/workflows/deploy-pages.yml` runs on every push to `main`.
 
 In the repo: **Settings → Secrets and variables → Actions**.
 
-Add **secrets** (names must match what the workflows expect): `SMTP2GO_API_KEY`, `QUOTE_FROM_EMAIL`, `QUOTE_TO_EMAIL`, `FLY_API_TOKEN`.
+Add **secrets**: `SMTP2GO_API_KEY`, `QUOTE_FROM_EMAIL`, `QUOTE_TO_EMAIL`.
 
-Add **variables**: `QUOTE_API_URL` (your Fly API URL), `PAGES_ORIGIN` (your `https://<username>.github.io` origin).
+Add **variables**: `QUOTE_API_URL` (public URL of your deployed API), `PAGES_ORIGIN` (your `https://<username>.github.io` origin).
 
 Do not commit these values to the repository.
 
-## Your demo URL
+## Your site URL
 
 ```
 https://YOUR_USERNAME.github.io/patriot-tree-care/
 ```
 
-Replace `YOUR_USERNAME` with your GitHub username. This is free and easy to share before buying a custom domain.
+Replace `YOUR_USERNAME` with your GitHub username.
 
 ## Custom domain later
 
 When you buy a domain, add it under **Settings → Pages → Custom domain**, and point DNS to GitHub Pages.
+
+## API deployment
+
+The Express API in `server/` handles quote form submissions via SMTP2GO. It runs locally with `npm run dev` and can be deployed to Cloudflare Workers, Fly.io, or any Node host. Set up the server env vars (`SMTP2GO_API_KEY`, `QUOTE_FROM_EMAIL`, `QUOTE_TO_EMAIL`) and point `QUOTE_API_URL` to it in GitHub Actions variables.

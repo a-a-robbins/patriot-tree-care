@@ -3,10 +3,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { QUOTE_SERVICE_OPTIONS, SITE } from '../../core/data/site-content';
 import { QuoteApiService } from '../../core/services/quote-api.service';
 import { PageHero } from '../../shared/components/page-hero/page-hero';
+import { AddressForm } from '../../shared/components/address-form/address-form';
 
 @Component({
   selector: 'app-quote',
-  imports: [ReactiveFormsModule, PageHero],
+  imports: [ReactiveFormsModule, PageHero, AddressForm],
   templateUrl: './quote.html',
   styleUrl: './quote.scss',
 })
@@ -24,11 +25,16 @@ export class Quote {
     name: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', [Validators.required, Validators.minLength(7)]],
-    address: ['', [Validators.required, Validators.minLength(5)]],
+    address: this.fb.nonNullable.group({
+      address1: ['', Validators.required],
+      address2: [''],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      zipcode: ['', [Validators.required, Validators.pattern(/^\d{5}(-\d{4})?$/)]],
+    }),
     serviceType: ['', Validators.required],
     preferredDate: [''],
-    message: ['', [Validators.required, Validators.minLength(10)]],
-    // Honeypot — leave empty; bots often fill hidden fields
+    message: [''],
     website: [''],
   });
 
@@ -46,9 +52,10 @@ export class Quote {
     this.submitting.set(true);
     this.errorMessage.set(null);
 
-    const { website: _honeypot, ...payload } = this.form.getRawValue();
+    const { website: _honeypot, address, ...rest } = this.form.getRawValue();
+    const flattened = `${address.address1}${address.address2 ? ', ' + address.address2 : ''}, ${address.city}, ${address.state} ${address.zipcode}`;
 
-    this.quoteApi.submitQuote(payload).subscribe({
+    this.quoteApi.submitQuote({ ...rest, address: flattened }).subscribe({
       next: () => {
         this.submitting.set(false);
         this.success.set(true);

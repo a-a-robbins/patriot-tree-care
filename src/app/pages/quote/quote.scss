@@ -24,6 +24,19 @@
   gap: 1.25rem;
 }
 
+.address-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  legend {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-forest-dark);
+    margin-bottom: 0.4rem;
+  }
+}
+
 label {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,45 @@
+<div [formGroup]="group">
+  <label>
+    <span>Address *</span>
+    <input type="text" formControlName="address1" autocomplete="street-address" />
+    @if (group.controls.address1.touched && group.controls.address1.invalid) {
+      <small class="field-error">Please enter the street address.</small>
+    }
+  </label>
+
+  <label>
+    <span>Address 2 (optional)</span>
+    <input type="text" formControlName="address2" autocomplete="address-line2" />
+  </label>
+
+  <div class="address-row">
+    <label class="address-row__city">
+      <span>City *</span>
+      <input type="text" formControlName="city" autocomplete="address-level2" />
+      @if (group.controls.city.touched && group.controls.city.invalid) {
+        <small class="field-error">Please enter the city.</small>
+      }
+    </label>
+
+    <label class="address-row__state">
+      <span>State *</span>
+      <select formControlName="state">
+        <option value="" disabled>Select</option>
+        @for (st of states; track st.value) {
+          <option [value]="st.value">{{ st.label }}</option>
+        }
+      </select>
+      @if (group.controls.state.touched && group.controls.state.invalid) {
+        <small class="field-error">Please select a state.</small>
+      }
+    </label>
+
+    <label class="address-row__zip">
+      <span>ZIP *</span>
+      <input type="text" formControlName="zipcode" autocomplete="postal-code" />
+      @if (group.controls.zipcode.touched && group.controls.zipcode.invalid) {
+        <small class="field-error">Please enter a valid ZIP code.</small>
+      }
+    </label>
+  </div>
+</div>

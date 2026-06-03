@@ -55,13 +55,10 @@
         </label>
       </div>
 
-      <label>
-        <span>Property address *</span>
-        <input type="text" formControlName="address" autocomplete="street-address" />
-        @if (form.controls.address.touched && form.controls.address.invalid) {
-          <small class="field-error">Please enter the job site address.</small>
-        }
-      </label>
+      <fieldset class="address-fieldset">
+        <legend>Job site address *</legend>
+        <app-address-form [group]="form.controls.address" />
+      </fieldset>
 
       <label>
         <span>Preferred site visit date (optional)</span>
@@ -69,17 +66,12 @@
       </label>
 
       <label>
-        <span>Describe the work *</span>
+        <span>Describe the work (optional)</span>
         <textarea
           formControlName="message"
           rows="5"
           placeholder="Tree species, access issues, power lines nearby, photos available, etc."
         ></textarea>
-        @if (form.controls.message.touched && form.controls.message.invalid) {
-          <small class="field-error"
-            >Please add a few details about the job (10+ characters).</small
-          >
-        }
       </label>
 
       <div class="hp" aria-hidden="true">

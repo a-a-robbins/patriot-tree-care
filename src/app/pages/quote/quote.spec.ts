@@ -3,16 +3,30 @@ import { of, throwError } from 'rxjs';
 import { Quote } from './quote';
 import { QuoteApiService } from '../../core/services/quote-api.service';
 
+function addressValue() {
+  return {
+    address1: '123 Main St',
+    address2: '',
+    city: 'Springfield',
+    state: 'IL',
+    zipcode: '62701',
+  };
+}
+
 function validPayload() {
   return {
     name: 'John',
     email: 'john@test.com',
     phone: '555-1234',
-    address: '123 Main St',
+    address: addressValue(),
     serviceType: 'removal',
     preferredDate: '',
-    message: 'I need a tree removed from my backyard.',
+    message: '',
   };
+}
+
+function flattenedAddress() {
+  return '123 Main St, Springfield, IL 62701';
 }
 
 describe('Quote', () => {
@@ -47,16 +61,15 @@ describe('Quote', () => {
   it('does not call API when honeypot is filled', () => {
     const fixture = TestBed.createComponent(Quote);
     const c = fixture.componentInstance as any;
-    const submitQuote = c.quoteApi.submitQuote as ReturnType<typeof vi.fn>;
 
     c.form.patchValue({ ...validPayload(), website: 'bot' });
     c.submit();
 
-    expect(submitQuote).not.toHaveBeenCalled();
+    expect(c.quoteApi.submitQuote).not.toHaveBeenCalled();
     expect(c.success()).toBe(true);
   });
 
-  it('calls API with valid form and empty honeypot, sets success', () => {
+  it('calls API with flattened address and optional message omitted', () => {
     const fixture = TestBed.createComponent(Quote);
     const c = fixture.componentInstance as any;
 
@@ -64,7 +77,15 @@ describe('Quote', () => {
     c.form.patchValue(validPayload());
     c.submit();
 
-    expect(c.quoteApi.submitQuote).toHaveBeenCalledWith(validPayload());
+    expect(c.quoteApi.submitQuote).toHaveBeenCalledWith({
+      name: 'John',
+      email: 'john@test.com',
+      phone: '555-1234',
+      address: flattenedAddress(),
+      serviceType: 'removal',
+      preferredDate: '',
+      message: '',
+    });
     expect(c.submitting()).toBe(false);
     expect(c.success()).toBe(true);
   });
