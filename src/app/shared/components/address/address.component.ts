@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
 
 export const US_STATES = [
   { value: 'AL', label: 'Alabama' },
@@ -64,13 +64,21 @@ export interface AddressFormGroup {
 }
 
 @Component({
-  selector: 'app-address-form',
+  selector: 'app-address',
   imports: [ReactiveFormsModule],
-  templateUrl: './address-form.html',
-  styleUrl: './address-form.scss',
+  templateUrl: './address.component.html',
+  styleUrl: './address.component.scss',
 })
-export class AddressForm {
+export class Address {
   @Input({ required: true }) group!: FormGroup<AddressFormGroup>;
 
   protected readonly states = US_STATES;
+
+  protected isRequired(control: AbstractControl): boolean {
+    return control.hasValidator(Validators.required);
+  }
+
+  protected showError(control: AbstractControl): boolean {
+    return control.touched && control.invalid;
+  }
 }

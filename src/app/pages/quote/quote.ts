@@ -3,11 +3,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { QUOTE_SERVICE_OPTIONS, SITE } from '../../core/data/site-content';
 import { QuoteApiService } from '../../core/services/quote-api.service';
 import { PageHero } from '../../shared/components/page-hero/page-hero';
-import { AddressForm } from '../../shared/components/address-form/address-form';
+import { Address } from '../../shared/components/address/address.component';
 
 @Component({
   selector: 'app-quote',
-  imports: [ReactiveFormsModule, PageHero, AddressForm],
+  imports: [ReactiveFormsModule, PageHero, Address],
   templateUrl: './quote.html',
   styleUrl: './quote.scss',
 })
