@@ -58,9 +58,18 @@ export const SERVICES = [
 ] as const;
 
 export const TRUST_POINTS = [
-  { title: 'Licensed & Insured', detail: 'Full liability coverage and workers’ comp for your peace of mind.' },
-  { title: 'No Surprise Billing', detail: 'Written quotes before work begins — we honor what we quote.' },
-  { title: 'Respect for Your Property', detail: 'Tarps, rigging, and thorough cleanup on every job.' },
+  {
+    title: 'Licensed & Insured',
+    detail: 'Full liability coverage and workers’ comp for your peace of mind.',
+  },
+  {
+    title: 'No Surprise Billing',
+    detail: 'Written quotes before work begins — we honor what we quote.',
+  },
+  {
+    title: 'Respect for Your Property',
+    detail: 'Tarps, rigging, and thorough cleanup on every job.',
+  },
   { title: 'Veteran-Led Crew', detail: 'Discipline, safety, and integrity on every site.' },
 ] as const;
 

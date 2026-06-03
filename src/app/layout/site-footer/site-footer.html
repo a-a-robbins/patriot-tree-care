@@ -9,7 +9,9 @@
       <p class="footer__heading">Explore</p>
       <ul>
         @for (link of navLinks; track link.path) {
-          <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+          <li>
+            <a [routerLink]="link.path">{{ link.label }}</a>
+          </li>
         }
         <li><a routerLink="/quote">Get a quote</a></li>
       </ul>
@@ -17,8 +19,12 @@
     <div>
       <p class="footer__heading">Contact</p>
       <ul>
-        <li><a [href]="site.phoneHref">{{ site.phone }}</a></li>
-        <li><a [href]="'mailto:' + site.email">{{ site.email }}</a></li>
+        <li>
+          <a [href]="site.phoneHref">{{ site.phone }}</a>
+        </li>
+        <li>
+          <a [href]="'mailto:' + site.email">{{ site.email }}</a>
+        </li>
         <li>{{ site.hours }}</li>
         <li>Serving {{ site.serviceArea }}</li>
       </ul>

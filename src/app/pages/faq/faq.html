@@ -8,7 +8,12 @@
   <div class="faq-list">
     @for (item of items; track item.q; let i = $index) {
       <article class="faq-item" [class.faq-item--open]="openIndex() === i">
-        <button type="button" class="faq-item__trigger" (click)="toggle(i)" [attr.aria-expanded]="openIndex() === i">
+        <button
+          type="button"
+          class="faq-item__trigger"
+          (click)="toggle(i)"
+          [attr.aria-expanded]="openIndex() === i"
+        >
           {{ item.q }}
         </button>
         @if (openIndex() === i) {

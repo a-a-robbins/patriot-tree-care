@@ -1,0 +1,46 @@
+name: Deploy API
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'server/**'
+      - '.github/workflows/deploy-api.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-api
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Set Fly secrets from GitHub Secrets
+        working-directory: server
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          SMTP2GO_API_KEY: ${{ secrets.SMTP2GO_API_KEY }}
+          QUOTE_FROM_EMAIL: ${{ secrets.QUOTE_FROM_EMAIL }}
+          QUOTE_TO_EMAIL: ${{ secrets.QUOTE_TO_EMAIL }}
+          CORS_ORIGIN: ${{ vars.PAGES_ORIGIN }}
+        run: |
+          flyctl secrets set \
+            "SMTP2GO_API_KEY=${SMTP2GO_API_KEY}" \
+            "QUOTE_FROM_EMAIL=${QUOTE_FROM_EMAIL}" \
+            "QUOTE_TO_EMAIL=${QUOTE_TO_EMAIL}" \
+            "CORS_ORIGIN=${CORS_ORIGIN}" \
+            --stage
+
+      - name: Deploy to Fly.io
+        working-directory: server
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: flyctl deploy --remote-only

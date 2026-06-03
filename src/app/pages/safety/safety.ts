@@ -18,9 +18,9 @@ export class Safety {
   ];
 
   protected readonly credentials = [
-  'General liability insurance (certificate on request)',
-  'Workers’ compensation coverage for all employees',
-  'ISA-informed pruning standards where applicable',
-  'Written scope of work before chainsaws start',
+    'General liability insurance (certificate on request)',
+    'Workers’ compensation coverage for all employees',
+    'ISA-informed pruning standards where applicable',
+    'Written scope of work before chainsaws start',
   ];
 }

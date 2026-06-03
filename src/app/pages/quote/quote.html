@@ -5,19 +5,13 @@
 />
 
 <section class="page-content container quote-layout">
-  @if (isDemoHost) {
-    <p class="demo-banner" role="note">
-      <strong>Demo site:</strong> This preview is hosted on GitHub Pages. The quote form needs the
-      API server — use the phone number below, or run the full app locally with
-      <code>npm run dev</code>.
-    </p>
-  }
   @if (success()) {
     <div class="alert alert--success" role="status">
       <h2>Thank you — we received your request.</h2>
       <p>
         A member of {{ site.name }} will reach out soon. For urgent storm damage, call
-        <a [href]="site.phoneHref">{{ site.phone }}</a>.
+        <a [href]="site.phoneHref">{{ site.phone }}</a
+        >.
       </p>
     </div>
   } @else {
@@ -82,7 +76,9 @@
           placeholder="Tree species, access issues, power lines nearby, photos available, etc."
         ></textarea>
         @if (form.controls.message.touched && form.controls.message.invalid) {
-          <small class="field-error">Please add a few details about the job (10+ characters).</small>
+          <small class="field-error"
+            >Please add a few details about the job (10+ characters).</small
+          >
         }
       </label>
 

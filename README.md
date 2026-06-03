@@ -18,13 +18,13 @@ Open [http://localhost:4200](http://localhost:4200). Quote submissions POST to `
 
 ## Project structure
 
-| Path | Purpose |
-|------|---------|
-| `src/app/pages/` | Route pages: home, services, about, gallery, safety, faq, contact, quote |
-| `src/app/core/data/site-content.ts` | Business copy, nav, services — **edit placeholders here** |
-| `src/app/core/services/quote-api.service.ts` | HTTP client for quote submission |
-| `server/` | Express API + SMTP2GO REST |
-| `proxy.conf.json` | Dev proxy `/api` → `localhost:3001` |
+| Path                                         | Purpose                                                                  |
+| -------------------------------------------- | ------------------------------------------------------------------------ |
+| `src/app/pages/`                             | Route pages: home, services, about, gallery, safety, faq, contact, quote |
+| `src/app/core/data/site-content.ts`          | Business copy, nav, services — **edit placeholders here**                |
+| `src/app/core/services/quote-api.service.ts` | HTTP client for quote submission                                         |
+| `server/`                                    | Express API + SMTP2GO REST                                               |
+| `proxy.conf.json`                            | Dev proxy `/api` → `localhost:3001`                                      |
 
 ## Email (SMTP2GO REST API)
 
@@ -66,12 +66,12 @@ Deploy the API with `.github/workflows/deploy-api.yml` (Fly.io). See [DEPLOY.md]
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Angular + API concurrently |
-| `npm start` | Angular only |
-| `npm run start:api` | API only |
-| `npm run build` | Production Angular build |
+| Command             | Description                |
+| ------------------- | -------------------------- |
+| `npm run dev`       | Angular + API concurrently |
+| `npm start`         | Angular only               |
+| `npm run start:api` | API only                   |
+| `npm run build`     | Production Angular build   |
 
 ## Tech stack
 

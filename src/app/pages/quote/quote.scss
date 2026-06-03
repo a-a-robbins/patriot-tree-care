@@ -1,19 +1,5 @@
 @use '../../shared/styles/buttons';
 
-.demo-banner {
-  grid-column: 1 / -1;
-  margin: 0 0 0.5rem;
-  padding: 1rem 1.25rem;
-  background: #fff8e6;
-  border: 1px solid var(--color-gold);
-  border-radius: var(--radius-sm);
-  font-size: 0.95rem;
-
-  code {
-    font-size: 0.85em;
-  }
-}
-
 .quote-layout {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
